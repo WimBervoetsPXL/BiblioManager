@@ -5,8 +5,123 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BiblioManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="800" Width="800" Loaded="OnWindow_Loaded">
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
+        <!-- Items list -->
+        <GroupBox Header="Available items" Padding="8" Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ListBox x:Name="lstItems" Margin="0,0,8,0" SelectionMode="Single" SelectionChanged="lstItems_SelectionChanged">
+                    
+                </ListBox>
+
+                <!-- Borrow panel -->
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Borrower name:" Margin="0,0,0,6" />
+                    <TextBox x:Name="txtBorrower" Margin="0,0,0,8" Height="28"/>
+                    <Button x:Name="btnLoan" Content="Loan selected item" Click="OnLoanItem_Clicked" Height="32" Margin="0,0,0,8"/>
+                    <Button x:Name="btnReturn" Content="Return selected item" Click="OnReturnItem_Clicked" Height="32" Margin="0,0,0,8" />
+                    <GroupBox Header="Details:">
+                        <TextBlock x:Name="txtDetails" Padding="5" Margin="0,0,0,6" Height="48" />
+                    </GroupBox>
+                    
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+
+        <Separator Grid.Row="1" Margin="0,5" />
+
+        <!-- Management section -->
+        <GroupBox Header="Management - Add new item" Grid.Row="2" Padding="8" Margin="0,20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Type selection -->
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Item type:" Margin="0,0,0,6" />
+                    <RadioButton x:Name="rbBook" Content="Book" IsChecked="True" Checked="ItemType_Checked" />
+                    <RadioButton x:Name="rbDvd" Content="DVD" Checked="ItemType_Checked" />
+                    <RadioButton x:Name="rbGame" Content="Game" Checked="ItemType_Checked" />
+                </StackPanel>
+
+                <!-- Type-specific panels -->
+                <Grid Grid.Column="1">
+                    <Grid.Resources>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Margin" Value="0,0,0,6" />
+                        </Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Margin" Value="0,0,0,8" />
+                            <Setter Property="Height" Value="28" />
+                        </Style>
+                    </Grid.Resources>
+
+                    <!-- Book panel -->
+                    <StackPanel x:Name="panelBook">
+                        <TextBlock Text="Title" />
+                        <TextBox x:Name="txtBookTitle" />
+                        <TextBlock Text="Author" />
+                        <TextBox x:Name="txtBookAuthor" />
+                        <TextBlock Text="Pages (int)" />
+                        <TextBox x:Name="txtBookPages" />
+                    </StackPanel>
+
+                    <!-- DVD panel -->
+                    <StackPanel x:Name="panelDvd" Visibility="Collapsed">
+                        <TextBlock Text="Title" />
+                        <TextBox x:Name="txtDvdTitle" />
+                        <TextBlock Text="Director" />
+                        <TextBox x:Name="txtDvdDirector" />
+                        <TextBlock Text="Duration (minutes, int)" />
+                        <TextBox x:Name="txtDvdMinutes" />
+                    </StackPanel>
+
+                    <!-- Game panel -->
+                    <StackPanel x:Name="panelGame" Visibility="Collapsed">
+                        <TextBlock Text="Title" />
+                        <TextBox x:Name="txtGameTitle" />
+                        <TextBlock Text="Platform" />
+                        <TextBox x:Name="txtGamePlatform" />
+                        <TextBlock Text="PEGI (int)" />
+                        <TextBox x:Name="txtGamePegi" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="Management - Add new item" FontWeight="Bold" VerticalAlignment="Center" Padding="5,0" />
+                        <Button x:Name="btnAddItem" Content="Add item" Click="OnAddItem_Clicked"
+                                Height="28" MinWidth="100" Margin="12,0,0,0" DockPanel.Dock="Right" />
+                    </DockPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+        </GroupBox>
+
+        <Separator Grid.Row="3" Margin="0,5" />
+
+        <!-- Overview -->
+        <StackPanel Grid.Row="4" Orientation="Horizontal" DockPanel.Dock="Left" Margin="0,20">
+                <TextBlock Text="Overview for name:" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <TextBox x:Name="txtOverviewName" Width="220" Height="28" Margin="0,0,8,0" />
+                <Button x:Name="btnOverview" Content="Show overview"
+                        Height="28" Click="OnShowOverview_Clicked" />
+        </StackPanel>
     </Grid>
 </Window>
