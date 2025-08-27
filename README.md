@@ -52,9 +52,9 @@ public string ItemType => GetType().Name; // "Book", "Dvd", "Game"
 Implementeer onderstaande vereisten:
 
 ### Init
-- Initialiseer een lege lijst (`List`) van `LibraryItems` en zorg dat deze gevuld wordt tijdens het laden van het venster. Gebruik hiervoor de bestaande `SeedData`-functie.
+- Initialiseer een lege lijst (`List`) van `LibraryItems` met de naam `_items` en zorg dat deze gevuld wordt tijdens het laden van het venster. Gebruik hiervoor de bestaande `SeedData`-functie.
 Toon daarna alle items in de `ListBox`. Dit kan eenvoudig met de code: `lstItems.ItemsSource = _items;`
-- Initialiseer een lege dictionary (`Dictionary<string, List<LibraryItem>>`). Hierin zullen de uitgeleende items per gebruiker worden bijgehouden.
+- Initialiseer een lege dictionary (`Dictionary<string, List<LibraryItem>>`) met de naam `_loans`. Hierin zullen de uitgeleende items per gebruiker worden bijgehouden.
 
 ### Details
 - Zorg ervoor dat de details van een item getoond worden wanneer een item geselecteerd wordt in de `ListBox`
