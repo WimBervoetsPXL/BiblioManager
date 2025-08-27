@@ -39,7 +39,7 @@ public string ItemType => GetType().Name; // "Book", "Dvd", "Game"
 - Deze functie:
     - Returned `false` als een item niet beschikbaar is of de `borrowerName` leeg is 
     - Zet de `IsAvailable`-property op `false`
-    - Vult de `Borowwer`-property met de `borrowerName`
+    - Vult de `Borrower`-property met de `borrowerName`
     - Returned `true` als bovenstaande succesvol werd toegepast
 
 ### Return
