@@ -86,7 +86,7 @@ Toon daarna alle items in de `ListBox`. Dit kan eenvoudig met de code: `lstItems
 ![details](media/show-details.png)
 
 ### Loan
-![loan](media/show-details.png)
+![loan](media/loan.png)
 
 ### Overview
 ![overview](media/overview.png)
